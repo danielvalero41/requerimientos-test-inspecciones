@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     })
   }//credenciales
 
-  Prueba(){
+  SignUp(){
     var body = {
       user: this.formulario_login.value.user,
       password: this.formulario_login.value.password

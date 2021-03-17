@@ -8,17 +8,15 @@ import { Router } from '@angular/router';
 export class RequerimientoService {  
 
   respuesta:any
-  line:any[] = [];
+  line:any[] = []
+  vehiculo:any[] = []
+  detalles:any[] = []
+  actividades:any[] = []
+  token:string  
 
   constructor(private http:HttpClient, public router:Router) { 
     console.log("El servicio esta listo");
-    
-    // this.http.get('http://190.156.254.66:50026/api/v1/apl?linea=1', {headers})
-    // .subscribe((res)=>{
-    //   console.log(res);      
-    // })    
-    
-        
+            
   }//constructor
 
   verificar_credenciales(credenciales){
@@ -27,7 +25,8 @@ export class RequerimientoService {
     .subscribe((res:any) =>{
       this.respuesta = res  
       if(this.respuesta.error == false){
-        this.router.navigate(['prueba',this.respuesta.data])
+        this.token = this.respuesta.data
+        this.router.navigate(['home'])
       }   
     })
 
@@ -40,10 +39,8 @@ export class RequerimientoService {
     });
 
     this.http.get('http://190.156.254.66:50026/api/v1/apl?linea=1', {headers})
-    .subscribe((res:any)=>{
-      console.log('Datos del line:');      
-      console.log(res); 
-      this.line = res     
+    .subscribe((res:any)=>{      
+      this.actividades = res.data     
     })
   }//getActivitiesByLine
 
@@ -73,6 +70,27 @@ export class RequerimientoService {
       console.log(res);    
     })
   }//agregar detalle
+
+  GetVehiculoByPlaca(token){
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer '+ token
+    });
+    this.http.get('http://190.156.254.66:50026/api/v1/vehiculos?placa=BZO925',{headers})
+    .subscribe((res:any)=>{
+      this.vehiculo = res.data
+    })
+  }//GetVehiculoByPlaca
+
+  GetDetalle(token){
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer '+ token
+    });
+    this.http.get('http://190.156.254.66:50026/api/v1/detalle_inspecciones',{headers})
+    .subscribe((res:any)=>{
+      this.detalles = res.data
+    })
+  }//GetVehiculoByPlaca
+  
 }
 
   

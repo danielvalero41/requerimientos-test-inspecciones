@@ -5,18 +5,18 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PruebaComponent } from './prueba/prueba.component';
 import { RequerimientoService } from './services/requerimiento.service';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
+import { RegistroComponent } from './component/registro/registro.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PruebaComponent,
+    AppComponent,    
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

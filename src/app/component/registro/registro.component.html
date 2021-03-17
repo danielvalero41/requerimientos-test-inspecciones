@@ -1,0 +1,126 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>Datos del vehiculo</h3>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <h3 >Fecha: {{ this.fecha | date }}</h3>
+            </div>   
+        </div>
+    </div>
+    <h4>Inspección de condicion fisica y mecanica</h4>
+    <div class="row">
+        <div class="col">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Placa</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.placa">
+                    </div>          
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Carroceria</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.carroceria">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Id</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.id">
+                    </div>          
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Componente</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.componente">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Marca Chasis</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.marca_chasis">
+                    </div>          
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Linea de chasis</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.linea_chasis">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Tipo de combustible</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.tipo_combustible">
+                    </div>          
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">N° Chasis</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.numero_chasis">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Año del modelo</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.anio_modelo">
+                    </div>          
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">N° del motor</label>
+                        <input type="text" class="form-control" [placeholder]="this.get_vehiculo.numero_motor">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <form [formGroup]="this.formulario_registro" >
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Ingrese el kilometraje</label>
+                            <input type="number" class="form-control" min="0" formControlName="kilometraje">
+                        </div>          
+                    </div>                
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3>Categorias</h3>
+        </div>        
+    </div>
+    
+
+    <table class="table">
+        <div *ngFor="let actividad of this.get_actividades; index as i">
+            <thead>
+                <tr>
+                  <th scope="col">{{ i+1 }}</th>
+                  <th scope="col">{{ actividad.nombre_categoria }}</th>
+                  <th scope="col">Conforme</th>
+                  <th scope="col">No conforme</th>
+                  <th scope="col">No aplica</th>
+                  <th scope="col">Observaciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>                  
+                    <td>{{ actividad.nombre_actividad }}</td>                                    
+                  
+                </tr>                
+              </tbody>
+        </div>
+    </table>
+</div>
